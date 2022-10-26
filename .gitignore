@@ -67,3 +67,4 @@ buck-out/
 *.tar.gzip
 backup
 backup/*
+*.txt
