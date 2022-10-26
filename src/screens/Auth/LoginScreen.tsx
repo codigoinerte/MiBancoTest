@@ -4,7 +4,7 @@ import { Button, TextInput } from 'react-native-paper';
 import { Alert, Loader } from '../../components'
 import { AuthContext } from '../../context';
 import { useBlackSpace, useLogin } from '../../hooks';
-import { View, Image, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { View, Image, StyleSheet, SafeAreaView, ScrollView, Dimensions } from 'react-native';
 
 export const LoginScreen = () => {
 
@@ -12,16 +12,18 @@ export const LoginScreen = () => {
 
   const { onSubmit, onChange, user, password, secureTextEntry, setSecureTextEntry, loader, mensaje } = useLogin();
   
+  const { height } = Dimensions.get("screen");
+
   if(loader) return <Loader/> ;
   
   return (
     
       <>
-      <SafeAreaView style={{ flex: 1}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:'red'}}>
           <ScrollView style={{ flex: 1 }}>
 
            
-                <View style={{flex:1,display:'flex', backgroundColor:'#00953a'}}>
+                <View style={{flex:1, minHeight: height, display:'flex', backgroundColor:'#00953a'}}>
                   <View style={{height:360, alignItems:'center'}}>
 
                     {/* <Brand style={{marginBottom:25,zIndex:2, position:'absolute'}} /> */}
@@ -33,7 +35,7 @@ export const LoginScreen = () => {
                           source={require('../../assets/auth-bg.jpg')}
                           style={{position:'absolute', top:-50, left:-25, right:0, width:450, height:500}} />
                   </View>
-                  <View style={{zIndex:3, backgroundColor:'#00953a',flex:1, padding:20, borderRadius:40, justifyContent:'center',alignItems:'center', flexDirection:'row', minHeight:350}}>
+                  <View style={{zIndex:3, backgroundColor:'#00953a',flex:1, padding:20, borderRadius:40, justifyContent:'center',alignItems:'center', flexDirection:'row', minHeight:350, height:'100%'}}>
                     <View style={{minWidth:300}}>
                       {
                         mensaje.length > 0 && <Alert type='warning' message={mensaje} />

@@ -20,13 +20,15 @@ export const SuccessScreen = ({ navigation, route }: PropsMenu) => {
     <View style={{ flex:1, backgroundColor:'#f4f4f4'}}>
     <ContainerScreens>
     
-    <View style={{display:'flex', justifyContent:'center',alignItems:'center'}}>
+    <View style={{display:'flex', justifyContent:'center',alignItems:'center', marginVertical:20}}>
         <Image
-            source={require('../../assets/success.png')}
+            source={require('../../assets/gif.gif')}
             style={{width:300, height:200}}
             resizeMode="contain"
             
         />
+
+        
 
         <View style={styles.recipe}>
           <Text style={{fontSize:20, color:'#6a6a6a', fontWeight:'700'}}>{params?.mensaje}</Text>
@@ -34,6 +36,17 @@ export const SuccessScreen = ({ navigation, route }: PropsMenu) => {
           <Text style={{fontSize:15, color:'#6a6a6a', fontWeight:'700', marginBottom:10}}>Usuario de prueba</Text>
           <Text style={{fontSize:20, color:'#000', fontWeight:'700', marginBottom:10}}>{hoy}</Text>
           <Text style={{fontSize:20, color:'#000', fontWeight:'700', marginBottom:10}}>Operación: {params?.operacion}</Text>
+
+          {
+            params?.nota &&
+            (
+              <View style={{borderTopColor:'#f4f4f4',borderTopWidth:1,display:'flex',width:'100%',}}>
+
+                <Text style={{fontSize:15, color:'#000', fontWeight:'500', marginBottom:10}}>{params?.nota}</Text>
+
+              </View>
+            )
+          }
         </View>
     
     </View>
@@ -68,6 +81,7 @@ const styles = StyleSheet.create({
         marginBottom:10,
         justifyContent:'center',
         display:'flex',
-        alignItems:'center'
+        alignItems:'center',
+        
     }
 });

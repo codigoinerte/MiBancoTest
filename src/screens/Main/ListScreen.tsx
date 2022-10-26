@@ -18,25 +18,29 @@ export const ListScreen = ({ navigation }: Props ) => {
     
   return (
     <>
+        <View style={{flex:1}}>
+            <BrandInner />
 
-        <BrandInner />
-        <View style={List.Container}>
+            <View style={List.Container}>
+            
+                <SafeAreaView style={List.safeArea}>
+                
+                    <FlatList
+                        data={data}
+                        renderItem={({item}) => (<ItemList {...item}/>)}
+                        keyExtractor={(item, index) => `item-${index}${item.fechaoperacion}${item.monto}`}
+                        ItemSeparatorComponent={ () => <ItemSeparator /> }
+                        ListHeaderComponent={()=><ItemHeader />} 
+                        style={{height:250}}                   
+                    />
+                
+                </SafeAreaView>
 
+            </View> 
 
-          
-            <SafeAreaView style={List.safeArea}>
-            
-                <FlatList
-                    data={data}
-                    renderItem={({item}) => (<ItemList {...item}/>)}
-                    keyExtractor={(item, index) => `item-${index}${item.fechaoperacion}${item.monto}`}
-                    ItemSeparatorComponent={ () => <ItemSeparator /> }
-                    ListHeaderComponent={()=><ItemHeader />} 
-                    style={{height:250}}                   
-                />
-            
-            </SafeAreaView>
-            
+                
+            </View>
+
             <View style={List.buttons}>
 
                 <Button 
@@ -47,9 +51,6 @@ export const ListScreen = ({ navigation }: Props ) => {
                 icon={()=><Icon name="send-outline" size={20} color="#fff" />}
                 onPress={()=> navigation.navigate('TransferScreen') }>Transferir</Button>
             </View>
-
-
-        </View>                
     </>
   )
 }
@@ -70,7 +71,9 @@ const List = StyleSheet.create({
         display:'flex',
         flexDirection:'row',
         justifyContent:'space-around',
-        gap:10
+        padding:10,
+        position:'absolute',
+        bottom:-30,
     },
     Container:{
         height:'100%',

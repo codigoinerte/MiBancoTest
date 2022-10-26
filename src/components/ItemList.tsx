@@ -8,7 +8,8 @@ export const ItemList = ({ cliente='', fechaoperacion='', monto='' }: Transaccio
 
     moment.locale('es');
 
-    const fecha = moment(fechaoperacion, "YYYYMMDD").fromNow(); ///moment(fechaoperacion).format("D [de] MMMM [del] YYYY [a las] h:mm:ss a");
+    //const fecha = moment(fechaoperacion, "YYYYMMDD").fromNow(); ///moment(fechaoperacion).format("D [de] MMMM [del] YYYY [a las] h:mm:ss a");
+    const fecha = moment(fechaoperacion).format("D MMM YYYY - h:mm a");
   return (
     <View style={styles.row}>
         <View style={styles.colName}>
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
         flex:1
     },
     colMonto:{
-        width:80
+        width:90
     },
     row:{
         display:'flex',

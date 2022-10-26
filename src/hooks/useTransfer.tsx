@@ -28,10 +28,11 @@ export const useTransfer = () => {
   
       const initialState = {
           celular:'930299310',
-          monto:'11.20'
+          monto:'11.20',
+          nota:'',
       }
   
-      const { form, celular, monto, onChange } = useForm(initialState);
+      const { form, celular, monto, nota, onChange } = useForm(initialState);
   
       const transferir = async ()=>{
 
@@ -77,6 +78,7 @@ export const useTransfer = () => {
                     navigation.navigate('SuccessScreen',{
                         mensaje: data.mensaje,
                         operacion: data.operacion,
+                        nota,
                         monto
                     });
                 }
