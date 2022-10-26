@@ -23,6 +23,7 @@
     "react-native-animatable": "^1.3.3",
     "react-native-auto-height-image": "^3.2.4",
     "react-native-gesture-handler": "^2.5.0",
+    "react-native-image-picker": "^4.10.0",
     "react-native-mmkv": "^2.4.3",
     "react-native-paper": "^4.12.4",
     "react-native-pressable-opacity": "^1.0.10",

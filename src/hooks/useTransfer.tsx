@@ -4,7 +4,7 @@ import { useForm } from './useForm';
 import { useNavigation } from '@react-navigation/native';
 
 
-export const useTransfer = () => {
+export const useTransfer = (pagina:string = 'SuccessScreen') => {
 
     const [loader, setLoader] = useState(false);
 
@@ -75,7 +75,7 @@ export const useTransfer = () => {
                 
                 if(data.mensaje == 'Transferencia exitosa'){
                     setLoader(false);
-                    navigation.navigate('SuccessScreen',{
+                    navigation.navigate(pagina,{
                         mensaje: data.mensaje,
                         operacion: data.operacion,
                         nota,

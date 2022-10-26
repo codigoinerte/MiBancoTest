@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Animated, StyleSheet } from "react-native";
+import { Animated, StyleSheet, Text } from 'react-native';
 
 import { AuthContext } from "../context";
 import { PropsSplashScreen } from "../interfaces/interfaces";
@@ -92,6 +92,7 @@ export const Splash = ({ isAppReady }: { isAppReady: boolean }) => {
         style={[style.image, { opacity: imageOpacity }]}
         resizeMode="contain"
       />
+      <Text>Hola mundo</Text>
     </Animated.View>
   );
 };

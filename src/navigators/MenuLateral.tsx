@@ -14,10 +14,18 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { QrScreen } from '../screens/Main/QrScreen';
+import { RecargaScreen } from '../screens/Main/RecargaScreen';
+import { RecargaSuccessScreen } from '../screens/Main/RecargaSuccessScreen';
 
 export type DrawerStackParams = {    
   ListScreen: undefined,
   TransferScreen: undefined,
+  RecargaScreen:undefined,
+  RecargaSuccessScreen:{
+    mensaje: string,
+    operacion: string,
+    monto:string
+  },
   SuccessScreen: {
     mensaje: string,
     operacion: string,
@@ -48,6 +56,8 @@ export const MenuLateral = () =>  {
       <Drawer.Screen name="ListScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={ListScreen}  />      
       <Drawer.Screen name="TransferScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={TransferScreen}  />      
       <Drawer.Screen name="SuccessScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={SuccessScreen}  />      
+      <Drawer.Screen name="RecargaSuccessScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={RecargaSuccessScreen}  />      
+      <Drawer.Screen name="RecargaScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={RecargaScreen}  />      
       <Drawer.Screen name="ScanScreen" options={{headerShown: false }} component={ScanScreen}  />      
     </Drawer.Navigator>
   );
@@ -85,6 +95,18 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
             style={ styles.menuBoton }
             onPress={()=> navigation.navigate('TransferScreen') }>
               <Text style={ styles.menuTexto }><Icon name="send-outline" size={20} color="#444444" /> Transferencia</Text>
+            </TouchableOpacity>
+          
+            <TouchableOpacity
+            style={ styles.menuBoton }
+            onPress={()=> navigation.navigate('RecargaScreen') }>
+              <Text style={ styles.menuTexto }><Icon name="send-outline" size={20} color="#444444" /> Recarga celular</Text>
+            </TouchableOpacity>
+           
+            <TouchableOpacity
+            style={ styles.menuBoton }
+            onPress={()=> navigation.navigate('ScanScreen') }>
+              <Text style={ styles.menuTexto }><Icon name="send-outline" size={20} color="#444444" /> Galeria</Text>
             </TouchableOpacity>
               
           </View>
