@@ -1,8 +1,11 @@
 import React from 'react';
-import { DataTable, Button } from 'react-native-paper';
-import { Brand, ContainerScreens, Loader } from '../../components';
+import { Button } from 'react-native-paper';
+import { Brand, ItemList, ItemSeparator, Loader, ItemHeader, BrandInner } from '../../components';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { useList } from '../../hooks';
+import { FlatList } from 'react-native-gesture-handler';
+import { SafeAreaView, View, StyleSheet, Text, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props extends DrawerScreenProps<any, any>{};
 
@@ -15,37 +18,76 @@ export const ListScreen = ({ navigation }: Props ) => {
     
   return (
     <>
-        <ContainerScreens>
 
-            <Brand />
+        <BrandInner />
+        <View style={List.Container}>
 
-            <DataTable>
-                <DataTable.Header>
-                    <DataTable.Title>Cliente</DataTable.Title>
-                    <DataTable.Title numeric>Monto</DataTable.Title>
-                    <DataTable.Title numeric>Fecha de operación</DataTable.Title>
-                </DataTable.Header>
 
-                {
-                    data.map(({cliente, monto, fechaoperacion}) => 
-                        (<DataTable.Row key={`${cliente}${fechaoperacion}${monto}`} >
-                            <DataTable.Cell>{cliente}</DataTable.Cell>
-                            <DataTable.Cell numeric>{monto}</DataTable.Cell>
-                            <DataTable.Cell numeric>{fechaoperacion}</DataTable.Cell>
-                        </DataTable.Row>)
-                    )
-                }
-                
-            </DataTable>
+          
+            <SafeAreaView style={List.safeArea}>
+            
+                <FlatList
+                    data={data}
+                    renderItem={({item}) => (<ItemList {...item}/>)}
+                    keyExtractor={(item, index) => `item-${index}${item.fechaoperacion}${item.monto}`}
+                    ItemSeparatorComponent={ () => <ItemSeparator /> }
+                    ListHeaderComponent={()=><ItemHeader />} 
+                    style={{height:250}}                   
+                />
+            
+            </SafeAreaView>
+            
+            <View style={List.buttons}>
 
-            <Button 
-            style={{backgroundColor:"#00953a", marginBottom:40}}
-            labelStyle={{fontSize:16,color:"#FFF"}}
-            uppercase={false} 
-            mode="contained" 
-            onPress={()=> navigation.navigate('TransferScreen') }>Transferir</Button>
+                <Button 
+                style={{...List.button, borderColor:'#00953a', borderWidth:1, backgroundColor:'#fff'}}
+                labelStyle={{fontSize:16,color:"#00953a", lineHeight:30}}
+                uppercase={false} 
+                mode="contained" 
+                onPress={()=> navigation.navigate('TransferScreen') }
+                icon={()=><Icon name="qr-code-outline" size={20} color="#00953a" />}
+                >                    
+                    Scannear
+                </Button>
 
-        </ContainerScreens>                
+                <Button 
+                style={{...List.button, marginLeft:8}}
+                labelStyle={{fontSize:16,color:"#FFF", lineHeight:30}}
+                uppercase={false} 
+                mode="contained" 
+                icon={()=><Icon name="send-outline" size={20} color="#fff" />}
+                onPress={()=> navigation.navigate('TransferScreen') }>Transferir</Button>
+            </View>
+
+
+        </View>                
     </>
   )
 }
+
+const List = StyleSheet.create({
+    safeArea:{
+        marginBottom:25
+    },
+    button:{
+        backgroundColor:"#00953a",
+        marginBottom:40,
+        flex:1,
+        height:50,
+        lineHeight:50,
+       
+    },
+    buttons:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'space-around',
+        gap:10
+    },
+    Container:{
+        height:'100%',
+        padding:20,
+        backgroundColor:'#fff'
+    },
+    ButtonName:{
+    }
+});

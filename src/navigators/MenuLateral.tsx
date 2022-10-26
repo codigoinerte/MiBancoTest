@@ -11,7 +11,7 @@ import { TransferScreen } from '../screens/Main/TransferScreen';
 import { SuccessScreen } from '../screens/Main/SuccessScreen';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export type DrawerStackParams = {    
   ListScreen: undefined,
@@ -57,7 +57,7 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
   return (
  
       <>
-        <DrawerContentScrollView>
+        <DrawerContentScrollView style={{flex:1}} contentContainerStyle={{ flex: 1 }}>
           {/* parte del avatar */}
           
           <TouchableOpacity
@@ -74,21 +74,25 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
           </TouchableOpacity>
 
           {/* opciones de menu */}
-          <View style={ styles.menuContainer }>
+          <View style={ {...styles.menuContainer,} }>
  
             <TouchableOpacity
             style={ styles.menuBoton }
             onPress={()=> navigation.navigate('TransferScreen') }>
-              <Text style={ styles.menuTexto }>Transferencia</Text>
+              <Text style={ styles.menuTexto }><Icon name="send-outline" size={20} color="#444444" /> Transferencia</Text>
             </TouchableOpacity>
+              
+          </View>
 
+          <View style={{flex:1, height:'100%'}}>
+
+              </View>
             <TouchableOpacity
-            style={ styles.menuBoton }
+            style={{...styles.menuBoton, backgroundColor:'#f2f2f2', borderRadius:0, marginBottom:0, height:60, display:'flex', justifyContent:'center', borderTopColor:'#eee',borderTopWidth:1 }}
             onPress={()=> logout() }>
-              <Text style={ styles.menuTexto }>Salir
+              <Text style={ styles.menuTexto }><Icon name="log-out-outline" size={20} color="#444444" />  Salir
               </Text>
             </TouchableOpacity>
-          </View>
  
         </DrawerContentScrollView>
 

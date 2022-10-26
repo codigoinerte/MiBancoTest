@@ -1,7 +1,10 @@
 import React from 'react'
-import { Alert, Brand, ContainerScreens, Loader } from '../../components'
+import { Alert, BrandInner, Loader } from '../../components'
 import { Button, TextInput } from 'react-native-paper';
 import { useTransfer } from '../../hooks/useTransfer';
+import { View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { appTheme } from '../../styles/appTheme';
 
 export const TransferScreen = () => {
 
@@ -12,18 +15,17 @@ export const TransferScreen = () => {
   
   return (
     <>
-    <ContainerScreens>
-
-        <Brand />
-
+    <BrandInner />
+    
+        <View style={{display:'flex', justifyContent:'center', flexDirection:'column', minWidth:300, flex:1, padding:20}}>
+          <View>
         {
           mensaje.length > 0 && <Alert type='warning' message={mensaje} />
         }
 
         <TextInput
-            style={{marginBottom:15, backgroundColor:'#FFF'}}
-            activeUnderlineColor="#00953a"     
-            underlineColor="#888"
+            style={{...appTheme.inputStyle, marginBottom:15, backgroundColor:'#FFF'}}
+            activeUnderlineColor="#00953a"
             placeholderTextColor="#888"
     
             theme={{
@@ -38,9 +40,8 @@ export const TransferScreen = () => {
           />
         
         <TextInput
-            style={{marginBottom:15, backgroundColor:'#FFF'}}
-            activeUnderlineColor="#00953a"     
-            underlineColor="#888"
+            style={{...appTheme.inputStyle ,marginBottom:15, backgroundColor:'#FFF'}}
+            activeUnderlineColor="#00953a" 
             placeholderTextColor="#888"
             keyboardType='decimal-pad'
             theme={{
@@ -56,13 +57,15 @@ export const TransferScreen = () => {
 
 
         <Button 
-        style={{backgroundColor:"#00953a", marginBottom:40}}
-        labelStyle={{fontSize:16,color:"#FFF"}}
+        style={{...appTheme.buttonStyle, marginBottom:40}}
+        labelStyle={{fontSize:18,color:"#FFF", lineHeight:50}}
         uppercase={false} 
         mode="contained" 
+        icon={()=><Icon name="send-outline" size={20} color="#fff" />}
         onPress={()=>transferir() }>Transferir</Button>
-
-    </ContainerScreens>                
+        </View>
+        </View>
+                   
 </>
   )
 }

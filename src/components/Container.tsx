@@ -8,7 +8,7 @@ export const Container = ({children}:any) => {
     return (
         <SafeAreaView style={{ flex: 1}}>
             <ScrollView style={{ flex: 1 }}>
-                <View style={{ ...stylesMain.bgBody, minHeight: height}}>
+                <View style={{ ...stylesMain.bgBody, minHeight: height, backgroundColor:'#00953a'}}>
                 {children} 
                 </View>  
             </ScrollView>

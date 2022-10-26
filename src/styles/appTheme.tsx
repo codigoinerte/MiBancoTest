@@ -45,6 +45,19 @@ export const appTheme = StyleSheet.create({
     menuTexto:{
         color:'#000',
         fontSize:20
+    },
+    inputStyle:{
+        marginBottom:15,
+        backgroundColor:'#FFF',
+        borderRadius:15,
+        borderTopEndRadius:15,
+        borderTopLeftRadius:15
+    },
+    buttonStyle:{
+        backgroundColor:"#f78000",
+        height:65,
+        lineHeight:65,
+        fontSize:25,
+        borderRadius:15
     }
-
 });

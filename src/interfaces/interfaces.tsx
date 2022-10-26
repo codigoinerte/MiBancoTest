@@ -87,9 +87,9 @@ export interface ClientList {
 }
 
 export interface Transacciones {
-  cliente: string;
-  monto: string;
-  fechaoperacion: string;
+  cliente?: string;
+  monto?: string;
+  fechaoperacion?: string;
 }
 
 export interface Transferencia {

@@ -12,14 +12,14 @@ export const HeaderMenu = () => {
 
   return (
     <>
-        <View style={{backgroundColor:'#00953a'}}>
+        <View style={{backgroundColor:'#00953a', minHeight:80, justifyContent:'center' }}>
             <TouchableOpacity 
                 onPress={()=> navigation.toggleDrawer() }
-                style={{backgroundColor:'#00953a',width:100, alignItems:'center',padding:1,paddingVertical:15,borderTopRightRadius:5,borderBottomRightRadius:5}}
+                style={{backgroundColor:'#00953a',width:80, alignItems:'center',padding:1,paddingVertical:15,borderTopRightRadius:5,borderBottomRightRadius:5}}
                 >
                 <View style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
-                    <Icon name="menu-outline" size={15} color="#fff" />
-                    <Text style={{marginLeft:10, color:'#fff'}}>Menú</Text>
+                    <Icon name="menu-outline" size={30} color="#fff" />
+                    
                 </View>
             </TouchableOpacity>
 
