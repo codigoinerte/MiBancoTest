@@ -6,6 +6,7 @@ import { useList } from '../../hooks';
 import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView, View, StyleSheet, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 interface Props extends DrawerScreenProps<any, any>{};
 
@@ -14,7 +15,6 @@ export const ListScreen = ({ navigation }: Props ) => {
   const { data, loader } = useList();
 
   if(loader) return <Loader/>;
-  
     
   return (
     <>
@@ -38,17 +38,6 @@ export const ListScreen = ({ navigation }: Props ) => {
             </SafeAreaView>
             
             <View style={List.buttons}>
-
-                <Button 
-                style={{...List.button, borderColor:'#00953a', borderWidth:1, backgroundColor:'#fff'}}
-                labelStyle={{fontSize:16,color:"#00953a", lineHeight:30}}
-                uppercase={false} 
-                mode="contained" 
-                onPress={()=> navigation.navigate('TransferScreen') }
-                icon={()=><Icon name="qr-code-outline" size={20} color="#00953a" />}
-                >                    
-                    Scannear
-                </Button>
 
                 <Button 
                 style={{...List.button, marginLeft:8}}

@@ -1,4 +1,4 @@
-package com.softdatos.tienda.newarchitecture.components;
+package com.mibanco.test.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

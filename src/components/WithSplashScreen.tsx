@@ -84,7 +84,7 @@ export const Splash = ({ isAppReady }: { isAppReady: boolean }) => {
       style={[style.container, { opacity: containerOpacity }]}
     >
       <Animated.Image
-        source={require('../assets/splash.png')}
+        source={require('../assets/logo-auth.png')}
         fadeDuration={0}
         onLoad={() => {
           setState(FADE_IN_IMAGE);
@@ -99,7 +99,7 @@ export const Splash = ({ isAppReady }: { isAppReady: boolean }) => {
 const style = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#00953a',
     alignItems: "center",
     justifyContent: "center",
   },

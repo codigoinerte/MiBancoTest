@@ -1,5 +1,5 @@
 // package com.storeerpapp;
-package com.softdatos.tienda;
+package com.mibanco.test;
 
 import android.app.Application;
 import android.content.Context;
@@ -10,7 +10,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.softdatos.tienda.newarchitecture.MainApplicationReactNativeHost;
+import com.mibanco.test.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 

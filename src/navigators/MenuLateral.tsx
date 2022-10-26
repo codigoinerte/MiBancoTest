@@ -9,17 +9,21 @@ import { ListScreen } from '../screens/Main/ListScreen';
 import { Brand, HeaderMenu } from '../components';
 import { TransferScreen } from '../screens/Main/TransferScreen';
 import { SuccessScreen } from '../screens/Main/SuccessScreen';
+import { ScanScreen } from '../screens/Main/ScanScreen';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { QrScreen } from '../screens/Main/QrScreen';
 
 export type DrawerStackParams = {    
   ListScreen: undefined,
   TransferScreen: undefined,
   SuccessScreen: {
     mensaje: string,
-    operacion: string
+    operacion: string,
+    monto:string
   },
+  ScanScreen: undefined,
 }
 
 const Drawer = createDrawerNavigator<DrawerStackParams>();
@@ -44,6 +48,7 @@ export const MenuLateral = () =>  {
       <Drawer.Screen name="ListScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={ListScreen}  />      
       <Drawer.Screen name="TransferScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={TransferScreen}  />      
       <Drawer.Screen name="SuccessScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={SuccessScreen}  />      
+      <Drawer.Screen name="ScanScreen" options={{headerShown: false }} component={ScanScreen}  />      
     </Drawer.Navigator>
   );
 }

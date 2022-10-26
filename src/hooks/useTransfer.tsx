@@ -76,7 +76,8 @@ export const useTransfer = () => {
                     setLoader(false);
                     navigation.navigate('SuccessScreen',{
                         mensaje: data.mensaje,
-                        operacion: data.operacion
+                        operacion: data.operacion,
+                        monto
                     });
                 }
                 

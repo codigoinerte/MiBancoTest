@@ -1,4 +1,4 @@
-package com.softdatos.tienda.newarchitecture.modules;
+package com.mibanco.test.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

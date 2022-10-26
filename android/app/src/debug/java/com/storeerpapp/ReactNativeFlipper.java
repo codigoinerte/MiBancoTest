@@ -5,7 +5,7 @@
  * directory of this source tree.
  */
 // package com.storeerpapp;
-package com.softdatos.tienda;
+package com.mibanco.test;
 
 import android.content.Context;
 import com.facebook.flipper.android.AndroidFlipperClient;

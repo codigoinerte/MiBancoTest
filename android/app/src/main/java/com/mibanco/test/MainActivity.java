@@ -1,5 +1,5 @@
 // package com.storeerpapp;
-package com.softdatos.tienda;
+package com.mibanco.test;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
