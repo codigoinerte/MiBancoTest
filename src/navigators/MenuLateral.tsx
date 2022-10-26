@@ -3,14 +3,26 @@ import React, { useRef, useState } from 'react';
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer';
 
 import { useWindowDimensions, Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { MainScreen } from '../screens/Main/MainScreen';
-import { appTheme as styles } from '../styles/appTheme';
-import { useEnlace } from '../hooks/useEnlace';
-import { menuEnlaces } from '../helpers/getDominio';
-import { useLogo } from '../hooks/useLogo';
-import AutoHeightImage from 'react-native-auto-height-image';
 
-const Drawer = createDrawerNavigator();
+import { appTheme as styles } from '../styles/appTheme';
+import { ListScreen } from '../screens/Main/ListScreen';
+import { Brand, HeaderMenu } from '../components';
+import { TransferScreen } from '../screens/Main/TransferScreen';
+import { SuccessScreen } from '../screens/Main/SuccessScreen';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+
+
+export type DrawerStackParams = {    
+  ListScreen: undefined,
+  TransferScreen: undefined,
+  SuccessScreen: {
+    mensaje: string,
+    operacion: string
+  },
+}
+
+const Drawer = createDrawerNavigator<DrawerStackParams>();
  
 export const MenuLateral = () =>  {
 
@@ -29,15 +41,17 @@ export const MenuLateral = () =>  {
       
      drawerContent={ (props) => <MenuInterno {...props} /> }
     >      
-      <Drawer.Screen name="MainScreen" options={{ headerShown:false, swipeEnabled:false }} component={MainScreen}  />      
+      <Drawer.Screen name="ListScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={ListScreen}  />      
+      <Drawer.Screen name="TransferScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={TransferScreen}  />      
+      <Drawer.Screen name="SuccessScreen" options={{headerShown: true, header: ()=> <HeaderMenu  /> }} component={SuccessScreen}  />      
     </Drawer.Navigator>
   );
 }
  
 const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
 
-  const { getEnlace } = useEnlace();
-  const { LogoUrl } = useLogo();
+  const { logout } = useContext(AuthContext);
+
   const [widthView, setWidthView] = useState(0)
 
   return (
@@ -46,50 +60,32 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
         <DrawerContentScrollView>
           {/* parte del avatar */}
           
-          <View style={ styles.avatarContainer }
-          onLayout={(event) => {
-            const {x, y, width, height} = event.nativeEvent.layout;
-            setWidthView(width-30);
-          }}
-          >
-            <AutoHeightImage
-              style={{paddingVertical:15,paddingHorizontal:15}}
-              width={widthView}
-              source={{uri:LogoUrl}}
-            />
-          </View>
- 
+          <TouchableOpacity
+            style={ styles.menuBoton }
+            onPress={()=> navigation.navigate('ListScreen') }>
+              <View style={ styles.avatarContainer }
+              onLayout={(event) => {
+                const {x, y, width, height} = event.nativeEvent.layout;
+                setWidthView(width-30);
+              }}
+              >
+                <Brand />
+              </View>
+          </TouchableOpacity>
+
           {/* opciones de menu */}
           <View style={ styles.menuContainer }>
  
             <TouchableOpacity
             style={ styles.menuBoton }
-            onPress={()=> getEnlace(menuEnlaces.usuarioMiCuenta) }>
-              <Text style={ styles.menuTexto }>Mi cuenta</Text>
+            onPress={()=> navigation.navigate('TransferScreen') }>
+              <Text style={ styles.menuTexto }>Transferencia</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
             style={ styles.menuBoton }
-            onPress={()=> getEnlace(menuEnlaces.usuarioDirecciones) }>
-              <Text style={ styles.menuTexto }>Direcciones</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity
-            style={ styles.menuBoton }
-            onPress={()=> getEnlace(menuEnlaces.usuarioPasswordChange) }>
-              <Text style={ styles.menuTexto }>Cambiar contraseña</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity
-            style={ styles.menuBoton }
-            onPress={()=> getEnlace(menuEnlaces.usuarioHistorial) }>
-              <Text style={ styles.menuTexto }>Mis pedidos</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity
-            style={ styles.menuBoton }
-            onPress={()=> getEnlace(menuEnlaces.cerrarSesion) }>
-              <Text style={ styles.menuTexto }>Cerrar sesion
+            onPress={()=> logout() }>
+              <Text style={ styles.menuTexto }>Salir
               </Text>
             </TouchableOpacity>
           </View>

@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Animated, StyleSheet } from "react-native";
 
 import { AuthContext } from "../context";
-import { infoBasic, logo } from "../helpers/getDominio";
-import { useLogo } from "../hooks/useLogo";
 import { PropsSplashScreen } from "../interfaces/interfaces";
 
 
@@ -32,7 +30,7 @@ const HIDDEN = "Hidden";
 
 export const Splash = ({ isAppReady }: { isAppReady: boolean }) => {
 
-  const { LogoUrl } = useLogo();
+
   
   const containerOpacity = useRef(new Animated.Value(1)).current;
   const imageOpacity = useRef(new Animated.Value(0)).current;
@@ -86,7 +84,7 @@ export const Splash = ({ isAppReady }: { isAppReady: boolean }) => {
       style={[style.container, { opacity: containerOpacity }]}
     >
       <Animated.Image
-        source={{uri:LogoUrl}}
+        source={require('../assets/splash.png')}
         fadeDuration={0}
         onLoad={() => {
           setState(FADE_IN_IMAGE);

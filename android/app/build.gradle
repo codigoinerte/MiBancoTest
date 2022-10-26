@@ -272,6 +272,14 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.facebook.fresco:animated-gif:1.12.0' //instead of
+
+    implementation 'com.facebook.fresco:animated-gif:2.0.0'   //use
+
+    implementation 'com.facebook.fresco:fresco:2.0.0'
+    
+    implementation 'com.facebook.fresco:animated-gif:2.0.0'
     
     implementation project(':react-native-gesture-handler')
 
@@ -333,7 +341,7 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 def isNewArchitectureEnabled() {
     // To opt-in for the New Architecture, you can either:
     // - Set `newArchEnabled` to true inside the `gradle.properties` file
-    // - Invoke gradle with `-newArchEnabled=true`
+    // - Invoke gradle with `-newArchEnabled=true`  
     // - Set an environment variable `ORG_GRADLE_PROJECT_newArchEnabled=true`
     return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
 }

@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthNavigator } from './AuthNavigator';
 import { AuthContext } from '../context/AuthContext';
 import { Loader } from '../components';
-import { MainScreen } from '../screens/Main/MainScreen';
+
 import { MenuLateral } from './MenuLateral';
 
 

@@ -1,7 +1,6 @@
+import { DrawerScreenProps } from "@react-navigation/drawer";
 import { StyleProp, TextStyle, ViewStyle } from "react-native";
-import WebView, { WebViewMessageEvent, WebViewNavigation } from "react-native-webview";
-import { WebViewErrorEvent, WebViewNavigationEvent } from "react-native-webview/lib/WebViewTypes";
-import { useWebview } from '../hooks/useWebview';
+
 
 export interface PropsSplashScreen {
     // isAppReady: boolean;
@@ -9,7 +8,8 @@ export interface PropsSplashScreen {
 }
 export interface PropsBrand{
     style?: StyleProp<ViewStyle>,
-    styleImagen?: StyleProp<ViewStyle>
+    styleImagen?: StyleProp<ViewStyle>,
+    imageRoute?:string,
 }
 
 export interface PropsAlert{
@@ -37,8 +37,7 @@ export type statusAuth = 'firstLoading' | 'checking' | 'auth' | 'auth-invite' | 
 
 export interface LoginProps {    
     user:string, 
-    password:string, 
-    token?:string
+    password:string
 }
 
 export interface AuthState{
@@ -76,50 +75,26 @@ interface Datos {
   token: string;
 }
 
-export interface WebState {
-    injectJavaScript:Function,
-    togleDrawer:Function,
-    webViewReference?: WebViewReference,
-    url:string,
-}
-
-
-export type WebViewReference = {
-    clearCache: Function , 
-    clearFormData: Function, 
-    clearHistory: Function, 
-    goBack: Function,
-    goForward: Function,
-    injectJavaScript: Function,
-    postMessage: Function,
-    reload: Function,
-    requestFocus: Function,
-    stopLoading: Function,
-} | null
-
-export interface WebInterfaceProps extends WebState{
-    saveInjectJavaScript:(callback:Function)=>void,
-    saveTogleDrawer:(callback:Function)=>void,
-    saveWebView:(callback:WebViewReference)=>void,
-    saveUrl:(url:string)=>void,
-}
-
-export interface WebViewProps {
-    uri:string,
-    style?: StyleProp<ViewStyle>
-}
-
-export interface RefreshWebViewProps {    
-    onMessage: ((event: WebViewMessageEvent) => void) & ((i: WebViewMessageEvent) => void),
-    onLoadStart: ((event: WebViewNavigationEvent) => void) & (() => void),
-    onLoadEnd: ((event: WebViewNavigationEvent | WebViewErrorEvent) => void) & (() => void),
-    style?: StyleProp<ViewStyle>,    
-    source: {
-        uri: string;
-    },        
-}
 
 
 export interface LogoResponse{
     respuesta:string
 }
+
+
+export interface ClientList {
+  transacciones: Transacciones[] | [];
+}
+
+export interface Transacciones {
+  cliente: string;
+  monto: string;
+  fechaoperacion: string;
+}
+
+export interface Transferencia {
+  operacion: number;
+  mensaje: string;
+}
+
+export interface PropsMenu extends DrawerScreenProps<any, any>{};

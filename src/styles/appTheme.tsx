@@ -40,7 +40,6 @@ export const appTheme = StyleSheet.create({
     menuBoton:{
         marginVertical:5,
         borderRadius:10,
-        backgroundColor:'#ededed',
         padding:10
     },
     menuTexto:{

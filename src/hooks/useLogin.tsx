@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import { loginApi } from "../api/loginApi";
 import { AuthContext } from '../context/AuthContext';
-import urlDominio from "../helpers/getDominio";
 import { FormValuesLogin, LoginHookInterface, LoginInterface } from "../interfaces/interfaces";
 import { useForm } from "./useForm";
 
@@ -14,8 +13,8 @@ export const useLogin = () => {
     const [loader, setLoader] = useState(false);
 
     const {form, onChange} = useForm<FormValuesLogin>({
-      user:'',
-      password:''
+      user:'Usuario',
+      password:'1234567'
     });
   
     const { user, password } = form;
@@ -51,29 +50,18 @@ export const useLogin = () => {
         
         setLoader(true);
 
-        try {       
-            
-            const url = `${urlDominio}?action=login`;
-            const { data } = await loginApi.post<LoginInterface>(url, datos);
-            const { datos: { token } } = data;            
-            
-            login({ user, password, token });
+        if(user == 'Usuario' && password == '1234567')
+        {
+            login({ user, password });
 
             setLoader(false);
-        
-        } catch (error:any) {
-        
-            const errorResponse =  error.response.data.respuesta || 'Error en los campos del login';
-            
-            setMessage({
-                ...message,
-                type:'denied',
-                mensaje:errorResponse
-            });
+        }
+        else
+        {
 
-            setLoader(false);
-            
-        }                                        
+        }
+
+        setLoader(false);                                       
     }
 
     return{

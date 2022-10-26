@@ -4,6 +4,6 @@ export * from './WithSplashScreen';
 export * from './Alert';
 export * from './Loader';
 
-export * from './WebViewComponent';
 export * from './Button';
-export * from './ButtonFooter';
+export * from './ContainerScreens';
+export * from './HeaderMenu';

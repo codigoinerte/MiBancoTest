@@ -40,9 +40,9 @@ export const AuthProvider = ({children}:any) => {
         }
     }
 
-    const login = async ({user, password, token = ''}: LoginProps) =>{
+    const login = async ({user, password}: LoginProps) =>{
         
-        const userData = { user, password, token }
+        const userData = { user, password }
 
         storage.set('user', JSON.stringify(userData))
 
@@ -53,8 +53,7 @@ export const AuthProvider = ({children}:any) => {
                 payload:{
                     status:'auth',
                     user,
-                    password,
-                    token    
+                    password 
         }});
 
        

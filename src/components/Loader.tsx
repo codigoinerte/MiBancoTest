@@ -11,7 +11,7 @@ export const Loader = ({style = {}}:Props) => {
     <View style={[styles.container, style ]}>
         <ActivityIndicator 
             size={50}
-            color={"#0093d3"}
+            color={"#00953a"}
         />
     </View>
 

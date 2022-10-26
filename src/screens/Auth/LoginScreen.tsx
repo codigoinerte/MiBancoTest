@@ -1,12 +1,8 @@
 import React, { useContext } from 'react'
-import { TouchableOpacity, View } from 'react-native';
-
-import { Button, TextInput, Text } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 
 import { Alert, Brand, Container, Loader } from '../../components'
 import { AuthContext } from '../../context';
-import { infoBasic } from '../../helpers/getDominio';
-import { loginStyle } from '../../styles/loginStyle';
 import { useBlackSpace, useLogin } from '../../hooks';
 
 export const LoginScreen = () => {
@@ -28,7 +24,7 @@ export const LoginScreen = () => {
 
         <TextInput
             style={{marginBottom:15, backgroundColor:'#FFF'}}
-            activeUnderlineColor="#0093d3"     
+            activeUnderlineColor="#00953a"     
             underlineColor="#888"
             placeholderTextColor="#888"
     
@@ -45,7 +41,7 @@ export const LoginScreen = () => {
 
         <TextInput
           style={{marginBottom:15, backgroundColor:'#FFF'}}
-          activeUnderlineColor="#0093d3"
+          activeUnderlineColor="#00953a"
           underlineColor="#888"
           placeholderTextColor="#888"
 
@@ -80,7 +76,7 @@ export const LoginScreen = () => {
        
 
         <Button 
-          style={{backgroundColor:"#0093d3"}}
+          style={{backgroundColor:"#00953a"}}
           labelStyle={{fontSize:16,color:"#FFF"}}
           uppercase={false} 
           mode="contained" 
